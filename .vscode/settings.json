@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.endOfLine": "auto",
+  "prettier.requireConfig": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
