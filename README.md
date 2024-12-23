@@ -37,8 +37,10 @@ Once the server started, the API can be used via a swagger interface available a
 
 ## Explanation
 
-For this assignment I decided to go as simple as possible, with explicit variable and method names to avoid unnecessary comments on the code.
+For this assignment I decided to go as simple as possible, by taking advantage of the existing decorators to avoid complexity, and by using explicit variable and method names to avoid unnecessary comments on the code, for a better readability.
 
 To create new resources, I used POST as we do not know what the ID of the object is going to be. Hence, I used PUT for the update as we update all the information at once and keep the same ID for the object. WIth that the result is always the same for the same parameters, which makes this operation idempotent according to the documentation for this verb.
 
-To update and delete resources, I first check whether it exists to avoid errors, and I decided to send back an explicit message to the user in the case it does not exist. Which I believe makes it clearer for the user and does not cause issues as he can see list the movies that exists with their ids.
+To update and delete resources, I first check whether it exists to avoid errors, and I decided to send back an explicit message to the user in the case it does not. Which I believe makes it clearer for the user and does not cause issues as he can see list the movies that exists with their ids.
+
+For the database, we have 2 main tables to store the Movies and the Genres. And between them we have a join table which allows us to handle the ManyToMany relationships. On this join table we have a CASCADE constraint when deleting so that if we delete a movie or a genre, the relation is deleted as well.
