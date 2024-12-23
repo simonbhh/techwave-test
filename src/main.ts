@@ -10,7 +10,6 @@ async function bootstrap() {
     .setTitle('TechWave Cinema')
     .setDescription('The TechWave Entertainment Cinema API')
     .setVersion('1.0')
-    .addTag('cinema')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

@@ -1,5 +1,5 @@
 -- Database creation script
-CREATE DATABASE "tech-wave-cinema"
+CREATE DATABASE "techwave-cinema"
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'

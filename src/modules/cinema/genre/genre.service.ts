@@ -20,8 +20,8 @@ export class GenreService {
   }
 
   async deleteGenre(id: number): Promise<void> {
-    const movie = await this.genreRepository.findOneBy({ id });
-    if (!movie) {
+    const genre: Genre = await this.genreRepository.findOneBy({ id });
+    if (!genre) {
       throw new NotFoundException(`Genre not found`);
     }
     this.genreRepository.delete(id);

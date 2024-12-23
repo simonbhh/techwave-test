@@ -19,7 +19,7 @@ export class MoviesService {
   }
 
   async createMovie(movieDto: MovieDto): Promise<Movie> {
-    const genres = await this.genresRepository.find({
+    const genres: Genre[] = await this.genresRepository.find({
       where: movieDto.genres.map((genre) => ({ name: ILike(genre) })),
     });
     return this.moviesRepository.save({
@@ -31,12 +31,12 @@ export class MoviesService {
   }
 
   async updateMovie(id: number, movieDto: MovieDto): Promise<Movie> {
-    const movie = await this.moviesRepository.findOneBy({ id });
+    const movie: Movie = await this.moviesRepository.findOneBy({ id });
     if (!movie) {
       throw new NotFoundException(`Movie not found`);
     }
 
-    const genres = await this.genresRepository.find({
+    const genres: Genre[] = await this.genresRepository.find({
       where: movieDto.genres.map((genre) => ({ name: ILike(genre) })),
     });
     movie.title = movieDto.title;
@@ -48,7 +48,7 @@ export class MoviesService {
   }
 
   async deleteMovie(id: number): Promise<void> {
-    const movie = await this.moviesRepository.findOneBy({ id });
+    const movie: Movie = await this.moviesRepository.findOneBy({ id });
     if (!movie) {
       throw new NotFoundException(`Movie not found`);
     }
